@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBloom - Discover Your Next Adventure</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="mainNavbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" id="navLogo">
+                <i class="fa-solid fa-leaf logo-icon"></i>
+                <span>Travel<span class="logo-accent">Bloom</span></span>
+            </a>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-item active" id="linkHome">Home</a></li>
+                <li><a href="about.html" class="nav-item" id="linkAbout">About Us</a></li>
+                <li><a href="contact.html" class="nav-item" id="linkContact">Contact Us</a></li>
+            </ul>
+
+            <div class="search-wrapper">
+                <form id="searchForm" class="search-form" onsubmit="event.preventDefault();">
+                    <input type="text" id="searchInput" placeholder="Search beach, temple, country..." aria-label="Search destinations">
+                    <button type="submit" id="searchButton" class="btn-search" aria-label="Submit search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <button type="button" id="clearButton" class="btn-clear" aria-label="Clear search">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Hero Section -->
+    <header class="hero-section" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Where Travel <span class="text-highlight">Blooms</span></h1>
+            <p class="hero-subtitle">Discover handpicked getaways, serene temples, pristine beaches, and breathtaking landscapes around the globe.</p>
+            <div class="hero-actions">
+                <a href="#recommendations" class="btn btn-primary" id="btnExplore">Explore Destinations</a>
+                <a href="contact.html" class="btn btn-outline" id="btnPlan">Start Planning</a>
+            </div>
+            
+            <!-- Quick Recommendations Categories -->
+            <div class="quick-categories">
+                <span>Try searching:</span>
+                <button class="category-tag" onclick="quickSearch('beach')"><i class="fa-solid fa-umbrella-beach"></i> Beach</button>
+                <button class="category-tag" onclick="quickSearch('temple')"><i class="fa-solid fa-gopuram"></i> Temple</button>
+                <button class="category-tag" onclick="quickSearch('country')"><i class="fa-solid fa-earth-americas"></i> Country</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-content">
+        <!-- Recommendations Section -->
+        <section class="section recommendations-section" id="recommendations">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tagline">Curated Escapes</span>
+                    <h2 class="section-title" id="resultsTitle">Featured Recommendations</h2>
+                    <p class="section-description">Our top picks for unforgettable experiences, categorized by style and location.</p>
+                </div>
+
+                <!-- Active Filter Banner (hidden by default) -->
+                <div id="filterBanner" class="filter-banner hidden">
+                    <span>Showing results for: <strong id="filterText">beach</strong></span>
+                    <button class="btn-reset" onclick="resetSearch()"><i class="fa-solid fa-arrow-rotate-left"></i> Reset Filter</button>
+                </div>
+
+                <!-- Recommendation Grid -->
+                <div class="recommendations-grid" id="recommendationsGrid">
+                    <!-- Cards will be dynamically injected by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 TravelBloom. All rights reserved. Made with love for global explorers.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification for Success -->
+    <div id="toast" class="toast hidden">
+        <div class="toast-content">
+            <i class="fa-solid fa-circle-check toast-icon"></i>
+            <div class="toast-message">
+                <h4 id="toastTitle">Message Sent!</h4>
+                <p id="toastBody">Thank you. We will contact you shortly.</p>
+            </div>
+            <button class="toast-close" onclick="closeToast()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
