@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBloom - Discover Your Next Adventure</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="mainNavbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" id="navLogo">
+                <i class="fa-solid fa-leaf logo-icon"></i>
+                <span>Travel<span class="logo-accent">Bloom</span></span>
+            </a>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-item active" id="linkHome">Home</a></li>
+                <li><a href="#about" class="nav-item" id="linkAbout">About Us</a></li>
+                <li><a href="#contact" class="nav-item" id="linkContact">Contact Us</a></li>
+            </ul>
+
+            <div class="search-wrapper">
+                <form id="searchForm" class="search-form" onsubmit="event.preventDefault();">
+                    <input type="text" id="searchInput" placeholder="Search beach, temple, country..." aria-label="Search destinations">
+                    <button type="submit" id="searchButton" class="btn-search" aria-label="Submit search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <button type="button" id="clearButton" class="btn-clear" aria-label="Clear search">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Hero Section -->
+    <header class="hero-section" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Where Travel <span class="text-highlight">Blooms</span></h1>
+            <p class="hero-subtitle">Discover handpicked getaways, serene temples, pristine beaches, and breathtaking landscapes around the globe.</p>
+            <div class="hero-actions">
+                <a href="#recommendations" class="btn btn-primary" id="btnExplore">Explore Destinations</a>
+                <a href="#contact" class="btn btn-outline" id="btnPlan">Start Planning</a>
+            </div>
+            
+            <!-- Quick Recommendations Categories -->
+            <div class="quick-categories">
+                <span>Try searching:</span>
+                <button class="category-tag" onclick="quickSearch('beach')"><i class="fa-solid fa-umbrella-beach"></i> Beach</button>
+                <button class="category-tag" onclick="quickSearch('temple')"><i class="fa-solid fa-gopuram"></i> Temple</button>
+                <button class="category-tag" onclick="quickSearch('country')"><i class="fa-solid fa-earth-americas"></i> Country</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-content">
+        <!-- Recommendations Section -->
+        <section class="section recommendations-section" id="recommendations">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tagline">Curated Escapes</span>
+                    <h2 class="section-title" id="resultsTitle">Featured Recommendations</h2>
+                    <p class="section-description">Our top picks for unforgettable experiences, categorized by style and location.</p>
+                </div>
+
+                <!-- Active Filter Banner (hidden by default) -->
+                <div id="filterBanner" class="filter-banner hidden">
+                    <span>Showing results for: <strong id="filterText">beach</strong></span>
+                    <button class="btn-reset" onclick="resetSearch()"><i class="fa-solid fa-arrow-rotate-left"></i> Reset Filter</button>
+                </div>
+
+                <!-- Recommendation Grid -->
+                <div class="recommendations-grid" id="recommendationsGrid">
+                    <!-- Cards will be dynamically injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section class="section about-section" id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <span class="section-tagline">Who We Are</span>
+                        <h2 class="section-title">About TravelBloom</h2>
+                        <p class="about-text">
+                            At TravelBloom, we design travel guides that enrich the soul and spark adventure. Our team of globetrotters compiles detailed insights about the world's most breathtaking locations, from remote serene temples to lively sandy beaches.
+                        </p>
+                        <p class="about-text">
+                            We believe that travel is not just about visiting new places, but about the blooms of connection and memories that remain long after you return. Let us guide you on your next beautiful journey.
+                        </p>
+                        
+                        <div class="about-elements">
+                            <div class="element-card">
+                                <div class="element-icon"><i class="fa-solid fa-compass"></i></div>
+                                <div class="element-info">
+                                    <h3>Expert Guides</h3>
+                                    <p>Meticulously researched itineraries and local tips for every spot.</p>
+                                </div>
+                            </div>
+                            <div class="element-card">
+                                <div class="element-icon"><i class="fa-solid fa-heart"></i></div>
+                                <div class="element-info">
+                                    <h3>Handpicked Spots</h3>
+                                    <p>Only the most beautiful, high-quality, and safe travel destinations.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-visual">
+                        <div class="blob-wrapper">
+                            <div class="glowing-blob"></div>
+                            <!-- A beautiful representation of travelling/planning -->
+                            <div class="visual-card">
+                                <span class="visual-badge"><i class="fa-solid fa-award"></i> Best Travel Guide 2026</span>
+                                <h3>Let's Make Your Next Trip Bloom</h3>
+                                <p>Join over 50,000+ happy travelers who find their getaways with us.</p>
+                                <a href="#contact" class="btn btn-primary btn-sm">Contact Our Team</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section class="section contact-section" id="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info-panel">
+                        <span class="section-tagline">Get In Touch</span>
+                        <h2 class="section-title text-white">Let's Connect</h2>
+                        <p class="contact-desc">
+                            Have questions about a destination? Or want custom recommendations? Send us a message and our travel designers will get back to you within 24 hours.
+                        </p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-detail-item">
+                                <i class="fa-solid fa-envelope detail-icon"></i>
+                                <div>
+                                    <h4>Email Us</h4>
+                                    <p>hello@travelbloom.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-detail-item">
+                                <i class="fa-solid fa-phone detail-icon"></i>
+                                <div>
+                                    <h4>Call Us</h4>
+                                    <p>+1 (555) 765-3866</p>
+                                </div>
+                            </div>
+                            <div class="contact-detail-item">
+                                <i class="fa-solid fa-location-dot detail-icon"></i>
+                                <div>
+                                    <h4>Headquarters</h4>
+                                    <p>100 Bloom Blvd, Suite 400, San Francisco, CA</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-panel">
+                        <h3>Send Us a Message</h3>
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-group">
+                                <label for="formName">Full Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-user input-icon"></i>
+                                    <input type="text" id="formName" required placeholder="John Doe">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="formEmail">Email Address</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-envelope input-icon"></i>
+                                    <input type="email" id="formEmail" required placeholder="john@example.com">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="formMessage">Message</label>
+                                <textarea id="formMessage" required rows="5" placeholder="Tell us about your dream destination..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block" id="btnSubmit">
+                                <span id="submitText">Send Message</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 TravelBloom. All rights reserved. Made with love for global explorers.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification for Success -->
+    <div id="toast" class="toast hidden">
+        <div class="toast-content">
+            <i class="fa-solid fa-circle-check toast-icon"></i>
+            <div class="toast-message">
+                <h4 id="toastTitle">Message Sent!</h4>
+                <p id="toastBody">Thank you. We will contact you shortly.</p>
+            </div>
+            <button class="toast-close" onclick="closeToast()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
